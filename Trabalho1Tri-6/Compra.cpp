@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include "Compra.hpp"
+#include "Anuncio.hpp"
+#include "Produto.hpp"
 
 using namespace std;
 
@@ -18,8 +20,12 @@ bool Compra::getTipoPagamento() {
 	return tipoPagamento;
 }
 
-void Compra::setValorTotal(float _valorTotal) {
-	valorTotal = _valorTotal;
+void Compra::setValorTotal(vector<Anuncio> &anuncio) {
+	valorTotal = anuncio[idAnuncio].getValor();
+	if (tipoPagamento == 0) {
+		valorTotal = valorTotal * 0.9;
+	}
+	
 }
 
 float Compra::getValorTotal() {

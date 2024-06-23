@@ -22,6 +22,14 @@ void Produto::setQuantidade(int _quantidade) {
 	quantidade = _quantidade;
 }
 
+void Produto::adicionarQuantidade(int _quantidade) {
+	quantidade += _quantidade;
+}
+
+void Produto::removerQuantidade(int _quantidade) {
+	quantidade -= _quantidade;
+}
+
 int Produto::getQuantidade() {
 	return quantidade;
 }

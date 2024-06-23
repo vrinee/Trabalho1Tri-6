@@ -17,40 +17,51 @@ User::~User() {
 
 Anuncio User::criarAnuncio() {
 	Anuncio anuncio;
-	anuncios.push_back(anuncio);
-	anuncios.back().setIdUsuario(id);
+	anuncio.setIdUsuario(id);
 	return anuncio;
 }
 
-void User::excluirAnuncio(Anuncio _anuncio) {
-	for (int i = 0; i < anuncios.size(); i++)
+void User::excluirAnuncio(int idAnuncio, vector<Anuncio> &anuncios) {
+	for (int i = 0; i < this->anuncios.size(); i++)
 	{
-		if (anuncios[i].getId() == _anuncio.getId()) {
-			anuncios.erase(anuncios.begin() + i);
+		if (this->anuncios[i] == idAnuncio) {
+			this->anuncios.erase(this->anuncios.begin() + i);
+			anuncios.erase(anuncios.begin() + idAnuncio);
 			return;
 		}
 	}
 }
 
-void User::adicionarFavorito(Anuncio _anuncio) {
-	favoritos.push_back(_anuncio);
+void User::listarAnuncios(vector<Anuncio> &anuncios) {
+	for (int i = 0; i < anuncios.size(); i++)
+	{
+		if (anuncios[i].getIdUsuario() == id) {
+			cout << "ID: " << anuncios[i].getId() << endl;
+			cout << "Valor: " << anuncios[i].getValor() << endl;
+			cout << "Disponivel: " << anuncios[i].getDisponivel() << endl;
+			cout << "Vezes comprado: " << anuncios[i].getVezes() << endl;
+		}
+	}
 }
 
-void User::removerFavorito(Anuncio _anuncio) {
+void User::adicionarFavorito(int idAnuncio) {
+	favoritos.push_back(idAnuncio);
+}
+
+void User::removerFavorito(int idAnuncio) {
 	for (int i = 0; i < favoritos.size(); i++)
 	{
-		if (favoritos[i].getId() == _anuncio.getId()) {
+		if (favoritos[i] == idAnuncio) {
 			favoritos.erase(favoritos.begin() + i);
 			return;
 		}
 	}
 }
 
-Compra User::comprar(Anuncio _anuncio) {
+Compra User::comprar(int idAnuncio) {
 	Compra compra;
-	compras.push_back(compra);
-	compras.back().setIdUsuario(id);
-	compras.back().setIdAnuncio(_anuncio.getId());
+	compra.setIdAnuncio(idAnuncio);
+	compra.setIdUsuario(id);
 	return compra;
 }
 

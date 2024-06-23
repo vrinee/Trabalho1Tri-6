@@ -13,12 +13,25 @@ Anuncio::~Anuncio() {
 
 }
 
-void Anuncio::setValor(float _valor) {
-	valor = _valor;
+void Anuncio::setValor() {
+	valor = 0;
+	for(int i = 0; i < produtos.size(); i++)
+	{
+		valor += produtos[i].getValor();
+	}
 }
 
 float Anuncio::getValor() {
+	setValor();
 	return valor;
+}
+
+void Anuncio::mudarVezes() {
+	vezesComprado++;
+}
+
+int Anuncio::getVezes() {
+	return vezesComprado;
 }
 
 void Anuncio::setDisponivel() {
@@ -53,7 +66,7 @@ int Anuncio::getId() {
 	return id;
 }
 
-void Anuncio::adicionarProduto(Produto _produto) {
+void Anuncio::adicionarProduto(Produto &_produto) {
 	produtos.push_back(_produto);
 }
 

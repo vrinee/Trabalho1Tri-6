@@ -33,9 +33,10 @@ Produto Admin::criarProduto() {
 	return produto;
 }
 
-void Admin::excluirUsuario(vector<User> &Usuario) {
+int Admin::excluirUsuario(vector<User> &Usuario) {
 	string login;
 	string email;
+	int op;
 	cout << "Digite o login do usuario que deseja excluir: ";
 	cin >> login;
 	cout << "Digite o email do usuario que deseja excluir: ";
@@ -44,26 +45,20 @@ void Admin::excluirUsuario(vector<User> &Usuario) {
 	{
 		if (Usuario[i].login == login && Usuario[i].getEmail() == email) {
 			Usuario.erase(Usuario.begin() + i);
-			return;
+			return i;
 		}
 	}
-}
 
-void Admin::excluirProduto(vector<Produto> &Produto) {
-	string nome;
-	string cor;
-	cout << "Digite o nome do produto que deseja excluir: ";
-	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	getline(cin, nome);
-	cout << "Digite a cor do produto que deseja excluir: ";
-	cin >> cor;
-
-	for (int i = 0; i < Produto.size(); i++)
-	{
-		if (Produto[i].nome == nome && Produto[i].cor == cor) {
-			Produto.erase(Produto.begin() + i);
-			return;
-		}
+	cout << "Usuario nao encontrado" << endl;
+	cout << "1 - Tentar novamente" << endl;
+	cout << "0 - Sair" << endl;
+	cin >> op;
+	if (op == 1) {
+		return excluirUsuario(Usuario);
 	}
+	return -1;
+
 }
 
+
+ 

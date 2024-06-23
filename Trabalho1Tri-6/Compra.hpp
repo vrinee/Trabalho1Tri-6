@@ -3,6 +3,8 @@
 
 using namespace std;
 
+class Anuncio;
+class Produto;
 
 class Compra {
 	public:
@@ -12,7 +14,7 @@ class Compra {
 
 		void setTipoPagamento(bool _tipoPagamento);
 		bool getTipoPagamento();
-		void setValorTotal(float _valorTotal);
+		void setValorTotal(vector<Anuncio> &anuncio);
 		float getValorTotal();
 		void setIdAnuncio(int _idAnuncio);
 		int getIdAnuncio();
@@ -25,7 +27,7 @@ class Compra {
 
 
 	private:
-		bool tipoPagamento;
+		bool tipoPagamento;// 0 = a vista, 1 = parcelado
 		float valorTotal;
 		int idAnuncio;
 		int idUsuario;

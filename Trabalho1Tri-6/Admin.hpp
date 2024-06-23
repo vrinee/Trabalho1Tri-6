@@ -18,8 +18,7 @@ class Admin {
 
 		User criarUsuario();
 		Produto criarProduto();
-		void excluirUsuario(vector<User> &Usuario);
-		void excluirProduto(vector<Produto> &Produto);
+		int excluirUsuario(vector<User> &Usuario);
 
 	private:
 		string senha;

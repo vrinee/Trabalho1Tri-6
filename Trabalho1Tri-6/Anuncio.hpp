@@ -9,26 +9,29 @@ class Anuncio {
 	public:
 		string titulo;
 		string descricao;
+		vector<Produto> produtos;
 
 		Anuncio();
 		~Anuncio();
 
-		void setValor(float _valor);
+		void setValor();
 		float getValor();
+		void mudarVezes();
+		int getVezes();
 		void setDisponivel();
 		bool getDisponivel();
 		void setIdUsuario(int _idUsuario);
 		int getIdUsuario();
 		void setId(int id);
 		int getId();
-		void adicionarProduto(Produto _produto);
+		void adicionarProduto(Produto &_produto);
 
 
 
 	private:
-		float valor;
-		vector<Produto> produtos;
-		bool disponivel;
+		float valor = 0;
+		int vezesComprado = 0;
+		bool disponivel = true;
 		int idUsuario;
 		int id;
 };

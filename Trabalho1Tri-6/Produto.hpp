@@ -7,6 +7,7 @@ class Produto {
 		string tipo;
 		string nome;
 		string cor;
+		string descricao;
 
 		Produto();
 		~Produto();
@@ -15,6 +16,8 @@ class Produto {
 		void setValor(float _valor);
 		float getValor();
 		void setQuantidade(int _quantidade);
+		void adicionarQuantidade(int _quantidade);
+		void removerQuantidade(int _quantidade);
 		int getQuantidade();
 		void setDisponivel();
 		bool getDisponivel();

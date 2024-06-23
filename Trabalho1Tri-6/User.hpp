@@ -10,18 +10,19 @@ class Produto;
 class User {
 	public:
 		string login;
-		vector<Anuncio> anuncios;
-		vector<Anuncio> favoritos;
-		vector<Compra> compras;
+		vector<int> anuncios;
+		vector<int> favoritos;
+		vector<int> compras;
 
 		User();
 		~User();
 
 		Anuncio criarAnuncio();
-		void excluirAnuncio(Anuncio _anuncio);
-		void adicionarFavorito(Anuncio _anuncio);
-		void removerFavorito(Anuncio _anuncio);
-		Compra comprar(Anuncio _anuncio);
+		void excluirAnuncio(int idAnuncio, vector<Anuncio> &anuncios);
+		void listarAnuncios(vector<Anuncio> &anuncios);
+		void adicionarFavorito(int idAnuncio);
+		void removerFavorito(int idAnuncio);
+		Compra comprar(int idAnuncio);
 
 		void setSenha(string _senha);
 		string getSenha();
