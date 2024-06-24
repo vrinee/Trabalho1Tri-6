@@ -8,7 +8,9 @@
 #include "Anuncio.hpp"
 #include "interactions.hpp"
 
+
 using namespace std;
+
 
 int loginADM(vector<Admin> &admins) {
 	string nome;
@@ -222,7 +224,7 @@ void criarAnuncio(vector<Anuncio> &anuncios, vector<Produto> &produtos, User &us
 	string descricao;
 	int idProduto;
 	int op;
-	int run;
+	int run = 1;
 
 
 	while (run == 1) {
@@ -260,6 +262,9 @@ void criarAnuncio(vector<Anuncio> &anuncios, vector<Produto> &produtos, User &us
 	cout << "Digite a descricao do anuncio: ";
 	getline(cin, descricao);
 
+	anuncios.back().titulo = titulo;
+	anuncios.back().descricao = descricao;
+
 }
 
 void comprarAnuncio(vector<Anuncio> &anuncios, vector<Compra> &compras, User &usuario, int idAnuncio) {
@@ -291,6 +296,8 @@ void comprarAnuncio(vector<Anuncio> &anuncios, vector<Compra> &compras, User &us
 	{
 		anuncios[idAnuncio].produtos[i].removerQuantidade(1);
 	}
+
+	usuario.compras.push_back(compras.size() - 1);
 }
 
 void excluirAnuncio(int idAnuncio, User &usuario, vector<Anuncio> &anuncios) {
